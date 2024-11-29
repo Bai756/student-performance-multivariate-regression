@@ -48,17 +48,6 @@ plt.xlabel('Epochs')
 plt.ylabel('Error')
 plt.show()
 
-# plot change in theta values
-feature_names = ['Intercept'] + list(ori_dataset.columns[:-1])  # Add intercept to the list of features
-plt.figure(figsize=(10, 6))
-for i in range(theta_history.shape[1]):
-    plt.plot(range(iterations), theta_history[:, i], label=f'Theta {i} ({feature_names[i]})')
-plt.xlabel('Iterations')
-plt.ylabel('Theta Value')
-plt.title('Change in Theta During Gradient Descent')
-plt.legend(loc='best')
-plt.show()
-
 # Plot predictions
 predictions = X @ theta
 plt.figure(figsize=(10, 6))
@@ -70,6 +59,17 @@ plt.title('Actual vs Predicted Values')
 plt.legend()
 plt.show()
 
+# plot change in theta values
+feature_names = ['Intercept'] + list(ori_dataset.columns[:-1])  # Add intercept to the list of features
+plt.figure(figsize=(10, 6))
+for i in range(theta_history.shape[1]):
+    plt.plot(range(iterations), theta_history[:, i], label=f'Theta {i} ({feature_names[i]})')
+plt.xlabel('Iterations')
+plt.ylabel('Theta Value')
+plt.title('Change in Theta During Gradient Descent')
+plt.legend(loc='best')
+plt.show()
+
 
 # Plot the data in comparison to extracurricular activities
 fig, axs = plt.subplots(2, 2, figsize=(15, 7)) 
@@ -78,7 +78,7 @@ sns.scatterplot(
     ax=axs[0, 0],
     data=ori_dataset,
     x='Hours Studied',
-    y='Performance Index',
+    y='Performance',
     hue='Extracurricular Activities',
     palette='Set1',
     alpha=0.7
@@ -87,18 +87,18 @@ sns.regplot(
     ax=axs[0, 0],
     data=ori_dataset,
     x='Hours Studied',
-    y='Performance Index',
+    y='Performance',
     scatter=False,
     color='blue',
     line_kws={"linewidth": 2},
 )
-axs[0, 0].set_title('Hours Studied vs Scores')
+axs[0, 0].set_title('Hours Studied vs Performance')
 
 sns.scatterplot(
     ax=axs[0, 1],
     data=ori_dataset,
     x='Sleep Hours',
-    y='Performance Index',
+    y='Performance',
     hue='Extracurricular Activities',
     palette='Set2',
     alpha=0.7
@@ -107,18 +107,18 @@ sns.regplot(
     ax=axs[0, 1],
     data=ori_dataset,
     x='Sleep Hours',
-    y='Performance Index',
+    y='Performance',
     scatter=False,
     color='purple',
     line_kws={"linewidth": 2},
 )
-axs[0, 1].set_title('Sleep Hours vs Scores')
+axs[0, 1].set_title('Sleep Hours vs Performance')
 
 sns.scatterplot(
     ax=axs[1, 0],
     data=ori_dataset,
     x='Previous Scores',
-    y='Performance Index',
+    y='Performance',
     hue='Extracurricular Activities',
     palette='Set3',
     alpha=0.7
@@ -127,18 +127,18 @@ sns.regplot(
     ax=axs[1, 0],
     data=ori_dataset,
     x='Previous Scores',
-    y='Performance Index',
+    y='Performance',
     scatter=False,
     color='green',
     line_kws={"linewidth": 2},
 )
-axs[1, 0].set_title('Previous Scores vs Scores')
+axs[1, 0].set_title('Previous Scores vs Performance')
 
 sns.scatterplot(
     ax=axs[1, 1],
     data=ori_dataset,
     x='Sample Question Papers Practiced',
-    y='Performance Index',
+    y='Performance',
     hue='Extracurricular Activities',
     palette='Set2',
     alpha=0.7
@@ -147,12 +147,12 @@ sns.regplot(
     ax=axs[1, 1],
     data=ori_dataset,
     x='Sample Question Papers Practiced',
-    y='Performance Index',
+    y='Performance',
     scatter=False,
     color='orange',
     line_kws={"linewidth": 2},
 )
-axs[1, 1].set_title('Sample Question Papers Practiced vs Scores')
+axs[1, 1].set_title('Sample Question Papers Practiced vs Performance')
 
 plt.tight_layout()
 plt.show()
