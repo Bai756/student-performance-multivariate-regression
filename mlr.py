@@ -43,8 +43,8 @@ theta, cost, theta_history = gradient_descent(X, y, theta, alpha, iterations)
 
 # plot the cost
 plt.plot(range(iterations), cost, 'r')
-plt.title('Error vs. Epochs')
-plt.xlabel('Epochs')
+plt.title('Error vs. Iterations')
+plt.xlabel('Iterations')
 plt.ylabel('Error')
 plt.show()
 
